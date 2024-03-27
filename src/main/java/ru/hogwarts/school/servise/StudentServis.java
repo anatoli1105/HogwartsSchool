@@ -29,6 +29,7 @@ public class StudentServis {
       }
       return null;
    }
+
    public Collection<Student> byAge(int age){
       return  studentMap.values().stream().filter(o->o.getAge()==age).toList();
    }
