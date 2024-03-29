@@ -29,6 +29,7 @@ public class FaculityServis {
        }
        return null;
    }
+
    public Collection<Faculty> colorFaculty(String color){
        return facultyMap.values().stream().filter(o->o.getColor().equals(color)).toList();
    }

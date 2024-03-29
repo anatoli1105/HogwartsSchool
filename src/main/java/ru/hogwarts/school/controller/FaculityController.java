@@ -26,10 +26,12 @@ public class FaculityController {
     public boolean delete(@RequestParam Long id){
         return  faculityServis.delete(id);
     }
+
     @PutMapping
     public Faculty update(@RequestParam Faculty student){
         return faculityServis.update(student);
     }
+
     @GetMapping(path = "/color")
     public Collection<Faculty> getColorFaculty(@RequestParam String color){
         return faculityServis.colorFaculty(color);

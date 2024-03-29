@@ -33,6 +33,7 @@ public class StudentController {
     public Student update(@RequestParam Student student){
         return studentServis.update(student);
     }
+
     @GetMapping(path = "/age")
     public Collection<Student> ageFilter(@RequestParam int age){
         return studentServis.byAge(age);
