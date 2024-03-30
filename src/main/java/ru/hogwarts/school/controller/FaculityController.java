@@ -1,5 +1,6 @@
 package ru.hogwarts.school.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.servise.FaculityServis;
@@ -14,26 +15,34 @@ public class FaculityController {
     public FaculityController(FaculityServis faculityServis) {
         this.faculityServis = faculityServis;
     }
-    @PostMapping
-    public Faculty add(@RequestBody Faculty faculity){
-        return faculityServis.add(faculity);
-    }
     @GetMapping
-    public Faculty get(@RequestParam Long id){
+    public Faculty creat(@RequestParam Faculty faculty){
+        return faculityServis.creat(faculty);
+    }
+    @PostMapping
+    public Faculty change(@RequestBody Faculty faculity) {
+        return faculityServis.cgange(faculity);
+    }
+
+    @GetMapping
+    public Faculty get(@RequestParam Long id) {
         return faculityServis.get(id);
     }
+
     @DeleteMapping
-    public boolean delete(@RequestParam Long id){
-        return  faculityServis.delete(id);
+    public ResponseEntity delete(@RequestParam Long id) {
+        faculityServis.delete(id);
+        return ResponseEntity.ok().build();
     }
 
-    @PutMapping
-    public Faculty update(@RequestParam Faculty student){
-        return faculityServis.update(student);
+    @GetMapping
+    public Collection<Faculty> getAll(@RequestParam Faculty faculty) {
+        return faculityServis.getAll(faculty);
     }
+
 
     @GetMapping(path = "/color")
-    public Collection<Faculty> getColorFaculty(@RequestParam String color){
+    public Collection<Faculty> getColorFaculty(@RequestParam String color) {
         return faculityServis.colorFaculty(color);
     }
 
