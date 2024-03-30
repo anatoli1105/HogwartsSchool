@@ -1,16 +1,24 @@
 package ru.hogwarts.school.model;
 
-public class Faculty {
-   private Long id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
+@Entity
+public class Faculty {
+    @Id
+    @GeneratedValue
+
+    private Long id;
 
 
     private String name;
     private String color;
-    public Faculty(Long id,String name,String color) {
+
+    public Faculty(Long id, String name, String color) {
         this.id = id;
         this.color = color;
-        this.name=name;
+        this.name = name;
     }
 
 
@@ -21,6 +29,7 @@ public class Faculty {
     public void setColor(String color) {
         this.color = color;
     }
+
     public String getName() {
         return name;
     }
